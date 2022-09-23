@@ -6,6 +6,8 @@ This repo is an amalgamation of all template repositories that kyle cares about.
 ```
   .
   + frontend # All solo frontend templates
+   + eslint
+    - .eslintrc-react.cjs # eslintrc for react app, add eslint-plugin-unused-imports and --save-dev
    + react
     + basic # A basic react template that does nothing
     + basic-with-store # clone of frontend/react/basic with zustand store implemented
