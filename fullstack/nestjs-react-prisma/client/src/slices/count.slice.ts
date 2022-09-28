@@ -8,14 +8,18 @@ export interface CountSlice {
   }
 }
 
-export const createCountSlice: StateCreator<Store, [], [], CountSlice> = (set) => ({
+export const createCountSlice: StateCreator<Store, [], [], CountSlice> = (set, get) => ({
   count: {
     count: 0,
-    increment: () => set((state) => ({ 
-      count: { 
-        ...state.count, 
-        count: state.count.count + 1 } 
-      })
-    ),
+    increment: async () => {
+      const response = await get().request.makeRequest('', { method: 'GET' });
+      console.log('response', response);
+      set((state) => ({ 
+        count: { 
+          ...state.count, 
+          count: state.count.count + 1 } 
+        })
+      )
+    },
   }
 });
