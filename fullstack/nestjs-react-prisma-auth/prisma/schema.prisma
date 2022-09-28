@@ -10,7 +10,10 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-model ExampleModel {
-  id    String     @default(uuid()) @id
-  value String
+model User {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  identifier String   @unique // can either be username or password
+  password   String
 }
