@@ -1,4 +1,34 @@
 import { Injectable } from '@nestjs/common';
-
+import { UserService } from './user/user.service';
+import { JwtService } from '@nestjs/jwt';
+import { User } from '@prisma/client';
 @Injectable()
-export class AuthService {}
+export class AuthService {
+  constructor(
+    private userService: UserService,
+    private jwtService: JwtService,
+  ) {}
+
+  async validateUser(
+    identifier: string,
+    pass: string,
+  ): Promise<Partial<User> | null> {
+    const user = await this.userService.findByIdentifier(identifier);
+    if (user && user.password === pass) {
+      const { password, ...result } = user;
+      return result;
+    }
+    return null;
+  }
+
+  async login(user: User) {
+    const payload = {
+      username: user.identifier,
+      sub: user.id,
+      roles: ['user'],
+    };
+    return {
+      access_token: this.jwtService.sign(payload),
+    };
+  }
+}

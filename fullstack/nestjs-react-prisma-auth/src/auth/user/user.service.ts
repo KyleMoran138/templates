@@ -12,6 +12,15 @@ export class UserService {
 
   private async _init() {
     this._users = await this.prisma.user.findMany({});
+    if (process.env.NODE_ENV !== 'production') {
+      this._users.push({
+        id: 1,
+        identifier: 'admin',
+        password: 'admin',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+    }
   }
 
   get users(): User[] {
@@ -20,6 +29,10 @@ export class UserService {
 
   async findByIdentifier(identifier: string): Promise<User | undefined> {
     return this._users.find((user) => user.identifier === identifier);
+  }
+
+  async findById(id: number): Promise<User | undefined> {
+    return this._users.find((user) => user.id === id);
   }
 
   async create(user: User): Promise<User> {

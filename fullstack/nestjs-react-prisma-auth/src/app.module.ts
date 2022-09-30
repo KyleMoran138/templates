@@ -3,7 +3,6 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/user.module';
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
 const imports = [];
@@ -17,7 +16,7 @@ if (PRODUCTION) {
 }
 
 @Module({
-  imports: [...imports, AuthModule, UserModule],
+  imports: [...imports, AuthModule],
   controllers: [AppController],
   providers: [],
 })
