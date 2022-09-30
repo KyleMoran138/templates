@@ -8,12 +8,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2022-09-30T17:03:47.979Z",
-    "modified": "2022-09-30T17:03:47.979Z",
+    "modified": "2022-09-30T18:19:57.401Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin\"\n}",
+      "raw": "{\n  \"identifier\": \"admin\",\n  \"password\": \"admin\"\n}",
       "form": []
     },
     "tests": []

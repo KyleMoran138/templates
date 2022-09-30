@@ -60,7 +60,7 @@ export const createRequestSlice: StateCreator<Store, [], [], RequestSlice> = (se
       // If using auth and no Authorization is set, get token and add to request headers
       if(useAuth && !Object.keys((requestInit.headers || {})).includes('Authorization')){
         console.warn('NO AUTH HEADER');
-        const token = '';
+        const token = get().auth.token;
         if(token){
           requestInit.headers = {
             ...requestInit.headers,

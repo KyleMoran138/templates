@@ -12,7 +12,7 @@ export const createCountSlice: StateCreator<Store, [], [], CountSlice> = (set, g
   count: {
     count: 0,
     increment: async () => {
-      const response = await get().request.makeRequest('', { method: 'GET' });
+      const response = await get().request.makeRequest('', { method: 'GET' }, { useAuth: true });
       console.log('response', response);
       set((state) => ({ 
         count: { 
