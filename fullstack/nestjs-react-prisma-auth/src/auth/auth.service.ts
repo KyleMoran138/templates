@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { UserService } from './user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '@prisma/client';
+import { validatePassword } from './passwordHelpers';
 @Injectable()
 export class AuthService {
   constructor(
@@ -14,8 +15,9 @@ export class AuthService {
     pass: string,
   ): Promise<Partial<User> | null> {
     const user = await this.userService.findByIdentifier(identifier);
-    if (user && user.password === pass) {
-      const { password, ...result } = user;
+    if (user && validatePassword(pass, user.passwordHash, user.salt)) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { passwordHash, salt, ...result } = user;
       return result;
     }
     return null;

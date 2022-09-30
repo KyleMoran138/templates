@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { User } from '@prisma/client';
 import { PrismaService } from 'src/common/prisma/prisma.service';
+import { hashAndSaltPassword } from '../passwordHelpers';
 
 @Injectable()
 export class UserService {
@@ -13,10 +14,12 @@ export class UserService {
   private async _init() {
     this._users = await this.prisma.user.findMany({});
     if (process.env.NODE_ENV !== 'production') {
+      const adminCreds = hashAndSaltPassword('admin');
       this._users.push({
         id: 1,
         identifier: 'admin',
-        password: 'admin',
+        passwordHash: adminCreds.passwordHash,
+        salt: adminCreds.salt,
         createdAt: new Date(),
         updatedAt: new Date(),
       });

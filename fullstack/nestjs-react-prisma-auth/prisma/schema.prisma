@@ -15,5 +15,6 @@ model User {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   identifier String   @unique // can either be username or password
-  password   String
+  passwordHash   String
+  salt   String
 }
