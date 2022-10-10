@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "VITE_BACKEND_URL=http://localhost:3000 vite",
     "build": "tsc && vite build",
+    "build:docker": "tsc && vite build --outDir ./dist",
     "preview": "vite preview"
   },
   "dependencies": {
