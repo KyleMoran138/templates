@@ -11,6 +11,9 @@ This repo is an amalgamation of all template repositories that kyle cares about.
    + react
     + basic # A basic react template that does nothing
     + basic-with-store # clone of frontend/react/basic with zustand store implemented
+  + fullstack # All backend 
+   + nestjs-react-prisma # A nestjs backend with prisma and react. React app is based off of basic-with-store and has a basic backend call
+   + nestjs-react-prisma-auth # A nestjs backend with prisma, react and auth. React app is based off of basic-with-store and has a basic authenticated call
 ```
 
 ## App template vars

@@ -1,0 +1,39 @@
+[
+  {
+    "_id": "1e0a35b8-5ab5-436f-8935-dc1805d765f8",
+    "colId": "a9b87c8b-45ed-4e7f-9be0-cd8fa539af68",
+    "containerId": "",
+    "name": "auth login",
+    "url": "http://localhost:3000/api/auth/login",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-09-30T17:03:47.979Z",
+    "modified": "2022-09-30T18:19:57.401Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"identifier\": \"admin\",\n  \"password\": \"admin\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "d015d8a1-a2ac-4610-a25a-8bb2477a4de0",
+    "colId": "a9b87c8b-45ed-4e7f-9be0-cd8fa539af68",
+    "containerId": "",
+    "name": "auth get profile",
+    "url": "http://localhost:3000/api/auth/profile",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2022-09-30T17:35:46.807Z",
+    "modified": "2022-09-30T17:36:55.971Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwic3ViIjoxLCJyb2xlcyI6WyJ1c2VyIl0sImlhdCI6MTY2NDU1OTM5MiwiZXhwIjoxNjY0NTU5NDUyfQ.oBy17lE5htcMJeoF-f7XaUjRMEbk-MIJNzU7CYJ5gF4"
+    },
+    "tests": []
+  }
+]
