@@ -1,4 +1,3 @@
-import { request } from 'http';
 import { StateCreator } from 'zustand';
 import { Store } from '../store';
 
@@ -19,7 +18,7 @@ export type RequestOptions = {
   body?: Record<string, unknown>;
 }
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL ? `${import.meta.env.VITE_BACKEND_URL}/api` : `http://${window.location.hostname}${window.location.port ? ':'+window.location.port : ''}/api`;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL ? `${import.meta.env.VITE_BACKEND_URL}/api` : `${window.location.protocol.includes('https') ? 'https' : 'http'}://${window.location.hostname}${window.location.port ? ':'+window.location.port : ''}/api`;
 
 export const createRequestSlice: StateCreator<Store, [], [], RequestSlice> = (set, get) => ({
   request: {
