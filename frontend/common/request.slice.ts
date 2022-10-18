@@ -58,10 +58,9 @@ export const createRequestSlice: StateCreator<Store, [], [], RequestSlice> = (se
 
       // If using auth and no Authorization is set, get token and add to request headers
       if(useAuth && !Object.keys((requestInit.headers || {})).includes('Authorization')){
-        console.warn('NO AUTH HEADER');
         const token = Object.keys(get()).includes('auth') ? 
-          //@ts-expect-error Auth slice might not be loaded in template app. This is fine, but if it is then yoink the token
-          state.auth.token 
+          // @ts-ignore Auth slice might not be loaded in template app. This is fine, but if it is then yoink the token
+          get().auth.token 
           : null;
         
         if(token){
